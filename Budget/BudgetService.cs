@@ -34,13 +34,7 @@ public class BudgetService
         totalBudget += budgets.First(x => x.YearMonth == end.ToString("yyyyMM")).GetAmountByDays(end.Day);
             
         return totalBudget;
-
-
-        var startYearMonthBudget = budgets.Where(x => x.YearMonth == startYearMonth);
-        var endYearMonthBudget = budgets.Where(x => x.YearMonth == endYearMonth);
-
-
-        return 0;
+        
     }
 }
 
