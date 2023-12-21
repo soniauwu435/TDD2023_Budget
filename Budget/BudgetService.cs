@@ -27,7 +27,7 @@ public class BudgetService
             var date = new DateTime(temp.Year, temp.Month, 1).AddMonths(1).AddDays(-1);
             var daysInMonth = (date - temp).Days + 1;
             totalBudget += budgets.FirstOrDefault(x => x.YearMonth == temp.ToString("yyyyMM"))?.GetAmountByDays(daysInMonth) ?? 0;
-            temp = temp.AddMonths(1);
+            temp = date.AddDays(1);
         }
 
         totalBudget += budgets.FirstOrDefault(x => x.YearMonth == end.ToString("yyyyMM"))?.GetAmountByDays(end.Day) ?? 0;
