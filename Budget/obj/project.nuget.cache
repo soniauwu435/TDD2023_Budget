@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "QaPMvYFKO8mEiBcx36gt5+/UulXQwbZlfsKAlwzMQ1t1OKOOWccxc36g2A0GCBYAaBf9VvigMtd1ilEeKGcgjQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\sonia.huang59\\Desktop\\Budget\\Budget\\Budget.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1803",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "You are running the 'restore' operation with an 'HTTP' source, 'http://nuget.coreop.net/nuget'. Non-HTTPS access will be removed in a future version. Consider migrating to an 'HTTPS' source."
+    }
+  ]
+}
