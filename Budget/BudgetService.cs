@@ -22,7 +22,7 @@ public class BudgetService
 
         var temp = start;
         var totalBudget = 0m;
-        while (temp < end)
+        while (temp < new DateTime(end.Year, end.Month, 1))
         {
             var date = new DateTime(temp.Year, temp.Month, 1).AddMonths(1).AddDays(-1);
             var daysInMonth = (date - temp).Days + 1;
