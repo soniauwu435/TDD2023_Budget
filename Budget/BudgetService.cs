@@ -1,4 +1,6 @@
-﻿namespace Budget;
+﻿using Budget.Interface;
+
+namespace Budget;
 
 public class BudgetService
 {
@@ -15,44 +17,22 @@ public class BudgetService
         if (startYearMonth == endYearMonth)
         {
             var days = (end - start).Days + 1;
-            var budget = budgets.First(x => x.YearMonth == startYearMonth);
-
-            return budget.GetAmountByDays(days);
+            return budgets.FirstOrDefault(x => x.YearMonth == startYearMonth)?.GetAmountByDays(days) ?? 0;
         }
 
         var temp = start;
         var totalBudget = 0m;
         while (temp < end)
         {
-                
             var date = new DateTime(temp.Year, temp.Month, 1).AddMonths(1).AddDays(-1);
             var daysInMonth = (date - temp).Days + 1;
-            totalBudget += budgets.First(x => x.YearMonth == temp.ToString("yyyyMM")).GetAmountByDays(daysInMonth);
+            totalBudget += budgets.FirstOrDefault(x => x.YearMonth == temp.ToString("yyyyMM"))?.GetAmountByDays(daysInMonth) ?? 0;
             temp = temp.AddMonths(1);
         }
 
-        totalBudget += budgets.First(x => x.YearMonth == end.ToString("yyyyMM")).GetAmountByDays(end.Day);
+        totalBudget += budgets.FirstOrDefault(x => x.YearMonth == end.ToString("yyyyMM"))?.GetAmountByDays(end.Day) ?? 0;
             
         return totalBudget;
         
-    }
-}
-
-internal interface IBudgetRepo
-{
-    List<Budget> GetAll();
-}
-
-
-
-class Budget
-{
-    public string YearMonth { get; set; }
-    public int Amount { get; set; }
-    public int DaysInMonth { get; set; }
-
-    public decimal GetAmountByDays(int days)
-    {
-        return Amount / DaysInMonth * days;
     }
 }
